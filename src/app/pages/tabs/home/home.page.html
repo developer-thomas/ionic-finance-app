@@ -17,10 +17,8 @@
 <ion-content color="primary">
   <swiper-container
     class="banners"
-    slides-per-view="1"
-    pagination="true"
-    navigation="true"
-    scrollbar="true"
+    [pagination]="true"
+    [pagination-dynamic-bullets]="true"
   >
     <swiper-slide *ngFor="let account of accounts">
       <div align="center">
