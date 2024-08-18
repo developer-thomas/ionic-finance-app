@@ -62,3 +62,26 @@ swiper-container {
     border-radius: 4px;
   }
 }
+
+ion-content {
+  swiper-container.feature-list {
+    padding: 5vh 0;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      ion-button {
+        --border-radius: 15px;
+        height: 8vh;
+        width: 70%;
+      }
+
+      ion-label {
+        font-size: 1rem;
+      }
+    }
+  }
+}

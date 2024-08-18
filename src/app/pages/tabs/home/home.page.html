@@ -34,4 +34,19 @@
       </div>
     </swiper-slide>
   </swiper-container>
+
+  <swiper-container
+    [slidesPerView]="3.5"
+    class="feature-list"
+    *ngIf="features.length > 0"
+  >
+    <swiper-slide *ngFor="let feature of features">
+      <div>
+        <ion-button slot="icon-only" [color]="feature.color">
+          <ion-icon [name]="feature.icon"></ion-icon>
+        </ion-button>
+        <ion-label>{{ feature.name }}</ion-label>
+      </div>
+    </swiper-slide>
+  </swiper-container>
 </ion-content>
