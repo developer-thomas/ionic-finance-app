@@ -32,6 +32,22 @@
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+// @import "@ionic/angular/css/palettes/dark.always.css";
+// @import "@ionic/angular/css/palettes/dark.class.css";
+// @import "@ionic/angular/css/palettes/dark.system.css";
+
+@import "swiper/css/bundle";
+@import "swiper/scss";
+@import "swiper/scss/keyboard";
+@import "swiper/scss/pagination";
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.33);
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--ion-color-white) !important;
+  width: 40px;
+  border-radius: 4px;
+}

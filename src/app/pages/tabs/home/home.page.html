@@ -1,0 +1,39 @@
+<ion-header mode="md" class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-no-padding">
+      <ion-label>
+        <ion-text color="tertiary">Welcome</ion-text>
+        <p>
+          <ion-text color="white"><strong>Username</strong></ion-text>
+        </p>
+      </ion-label>
+    </ion-title>
+    <ion-avatar slot="end">
+      <img src="../../../../assets/user-default.png" alt="" />
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary">
+  <swiper-container
+    class="banners"
+    slides-per-view="1"
+    pagination="true"
+    navigation="true"
+    scrollbar="true"
+  >
+    <swiper-slide *ngFor="let account of accounts">
+      <div align="center">
+        <ion-label>
+          <span>Total Balance</span>
+          <p class="acc-amt">
+            <ion-text color="white"
+              >{{account?.balance | currency: 'BRL'}}</ion-text
+            >
+          </p>
+          <span>{{account?.acc_no}}</span>
+        </ion-label>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</ion-content>
