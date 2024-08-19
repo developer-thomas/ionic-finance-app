@@ -49,4 +49,30 @@
       </div>
     </swiper-slide>
   </swiper-container>
+
+  <ion-list class="transactions" *ngIf="transactions.length > 0">
+    <ion-list-header>
+      <ion-label color="medium">Transactions</ion-label>
+    </ion-list-header>
+
+    <ion-item-group>
+      <ion-item lines="full" *ngFor="let transaction of transactions">
+        <ion-thumbnail slot="start" class="ion-text-center">
+          <img
+            [src]="'assets/imgs/' + (transaction.amount >= 0 ? 'up-arrow2.png' : 'down-arrow2.png')"
+          />
+        </ion-thumbnail>
+        <ion-label>
+          <ion-text>{{transaction.to }}</ion-text>
+          <p>
+            <ion-text>{{transaction.date | date: 'd MMM, y'}}</ion-text>
+          </p>
+        </ion-label>
+        <ion-text slot="end" color="primary">
+          {{ transaction.amount >= 0 ? ('R$' + transaction.amount) : ('-R$' +
+          transaction.amount * (-1)) }}
+        </ion-text>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
 </ion-content>
