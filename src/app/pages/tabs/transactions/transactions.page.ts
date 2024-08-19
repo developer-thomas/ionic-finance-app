@@ -25,7 +25,9 @@ export class TransactionsPage implements OnInit {
         (item) => item.amount >= 0
       );
     } else {
-      this.allTransactions.filter((item) => item.amount <= 0);
+      this.filteredTransactions = this.allTransactions.filter(
+        (item) => item.amount < 0
+      );
     }
   }
   segmentChanged(ev: CustomEvent) {

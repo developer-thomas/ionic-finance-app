@@ -17,3 +17,25 @@
     </ion-segment>
   </ion-toolbar>
 </ion-header>
+
+<ion-content color="secondary" fullscreen>
+  <ion-item-group>
+    <ion-item lines="full" *ngFor="let transaction of filteredTransactions">
+      <ion-thumbnail slot="start" class="ion-text-center">
+        <img
+          [src]="'assets/imgs/' + (transaction.amount >= 0 ? 'up-arrow2.png' : 'down-arrow2.png')"
+        />
+      </ion-thumbnail>
+      <ion-label>
+        <ion-text>{{transaction.to }}</ion-text>
+        <p>
+          <ion-text>{{transaction.date | date: 'd MMM, y'}}</ion-text>
+        </p>
+      </ion-label>
+      <ion-text slot="end" color="primary">
+        {{ transaction.amount >= 0 ? ('R$' + transaction.amount) : ('-R$' +
+        transaction.amount * (-1)) }}
+      </ion-text>
+    </ion-item>
+  </ion-item-group>
+</ion-content>
