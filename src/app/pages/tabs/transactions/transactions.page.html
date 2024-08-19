@@ -1,13 +1,19 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>transactions</ion-title>
+    <ion-title>Transactions</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment
+      mode="ios"
+      [value]="segmentValue"
+      (ionChange)="segmentChanged($event)"
+    >
+      <ion-segment-button value="in">
+        <ion-label>Received</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="out">
+        <ion-label>Sended</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">transactions</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>

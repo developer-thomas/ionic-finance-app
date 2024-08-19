@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.page.html',
   styleUrls: ['./transactions.page.scss'],
 })
-export class TransactionsPage implements OnInit {
+export class TransactionsPage {
+  allTransactions: any[] = [];
+  transactions: any[] = [];
+  segmentValue = 'in';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  segmentChanged(ev: any) {}
 }
