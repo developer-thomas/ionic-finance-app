@@ -1,13 +1,69 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="transparent">
+    <ion-buttons>
+      <ion-back-button
+        text="Voltar"
+        icon="arrow-back"
+        slot="start"
+        color="primary"
+        defaultHref="/"
+      ></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">login</ion-title>
+  <ion-header class="ion-no-border">
+    <ion-toolbar color="transparent">
+      <ion-title>
+        <ion-text color="primary">Dev</ion-text>
+      </ion-title>
+    </ion-toolbar>
+    <ion-toolbar color="transparent">
+      <ion-title class="second-title">
+        <ion-text color="primary">Bank</ion-text>
+      </ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div>
+    <div>
+      <h2>Entrar</h2>
+      <p>Insira o <b>CPF</b> e a <b>senha</b> para entrar na sua conta.</p>
+    </div>
+
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <ion-item lines="none">
+        <ion-label position="stacked">CPF:</ion-label>
+        <ion-input
+          placeholder="123.456.789-10"
+          formControlName="cpf"
+          maxlength="11"
+        ></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked">Senha:</ion-label>
+        <ion-input
+          placeholder="Insira sua senha"
+          [type]="isVisible"
+          formControlName="senha"
+          maxlength="16"
+        >
+          <ion-icon
+            slot="end"
+            (click)="changeInputPasswordType()"
+            [name]="isVisible === 'password' ? 'eye-outline' : 'eye-off-outline' "
+          ></ion-icon>
+        </ion-input>
+      </ion-item>
+
+      <ion-button [disabled]="myForm.invalid" expand="full" type="submit">
+        Entrar
+      </ion-button>
+    </form>
+    <div class="ion-text-center">
+      <p>Esqueceu sua senha? <a color="text-primary" href="">Clique aqui</a></p>
+      <p>Não possui conta? <a href="">Cadastre-se aqui.</a></p>
+    </div>
+  </div>
 </ion-content>

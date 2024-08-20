@@ -1,0 +1,35 @@
+div {
+  > div {
+    padding: 0 1rem 1rem 0.8rem;
+  }
+
+  ion-item {
+    ion-input {
+      border: 1px solid black;
+      border-radius: 10px;
+      --background: transparent;
+
+      --padding-start: 1rem;
+      --padding-end: 1rem;
+      margin-bottom: 1rem;
+      &:last-child {
+        margin-bottom: 2rem;
+      }
+
+      &:hover {
+        transition: box-shadow 0.3s ease-in-out;
+        box-shadow: 0 0 5pt 4pt #d3d3d3;
+        outline-width: 0px;
+      }
+    }
+  }
+
+  ion-button {
+    padding: 0 1rem 2rem 1rem;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
