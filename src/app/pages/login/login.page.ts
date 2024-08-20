@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 type InputType = 'password' | 'text';
 
@@ -12,7 +13,7 @@ export class LoginPage {
   myForm!: FormGroup;
   isVisible: InputType = 'password';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.myForm = this.fb.group({
       cpf: [
         '',
@@ -31,7 +32,7 @@ export class LoginPage {
   }
 
   onSubmit() {
-    console.log(this.myForm.value);
+    this.router.navigateByUrl('/tabs/home');
     this.myForm.reset();
   }
 }
