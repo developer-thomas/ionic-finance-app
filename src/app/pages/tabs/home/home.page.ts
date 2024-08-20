@@ -4,9 +4,6 @@ import { transactionsData } from 'src/app/data/Transactions.data';
 import { Accounts } from 'src/app/models/home-models/Accounts.model';
 import { Features } from 'src/app/models/home-models/Features.model';
 import { Transactions } from 'src/app/models/home-models/Transactions.model';
-import { register } from 'swiper/element/bundle';
-
-register();
 
 @Component({
   selector: 'app-home',
