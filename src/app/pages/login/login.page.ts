@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/users/login.service';
 
 type InputType = 'password' | 'text';
 
@@ -13,7 +14,11 @@ export class LoginPage {
   myForm!: FormGroup;
   isVisible: InputType = 'password';
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private loginService: LoginService
+  ) {
     this.myForm = this.fb.group({
       cpf: [
         '',
@@ -21,9 +26,10 @@ export class LoginPage {
           Validators.required,
           Validators.minLength(11),
           Validators.maxLength(11),
+          Validators.pattern(/^[0-9]+$/),
         ],
       ],
-      senha: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -32,7 +38,15 @@ export class LoginPage {
   }
 
   onSubmit() {
-    this.router.navigateByUrl('/tabs/home');
+    // this.router.navigateByUrl('/tabs/home');
+    this.loginService
+      .userCredentials(
+        this.myForm.get('cpf')?.value,
+        this.myForm.get('password')?.value
+      )
+      .subscribe((res) => {
+        console.log(res);
+      });
     this.myForm.reset();
   }
 }

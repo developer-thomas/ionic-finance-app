@@ -33,7 +33,7 @@
           formControlName="cpf"
           maxlength="11"
         ></ion-input>
-        <p *ngIf="myForm.get('cpf')?.invalid && myForm.touched">
+        <p *ngIf="myForm.get('cpf')?.errors && myForm.touched">
           Informe um CPF válido*
         </p>
       </ion-item>
@@ -42,7 +42,7 @@
         <ion-input
           placeholder="Insira sua senha"
           [type]="isVisible"
-          formControlName="senha"
+          formControlName="password"
           maxlength="16"
         >
           <ion-icon
@@ -51,7 +51,7 @@
             [name]="isVisible === 'password' ? 'eye-outline' : 'eye-off-outline' "
           ></ion-icon>
         </ion-input>
-        <p *ngIf="myForm.get('senha')?.invalid && myForm.touched">
+        <p *ngIf="myForm.get('password')?.errors && myForm.touched">
           Informe uma senha válida*
         </p>
       </ion-item>

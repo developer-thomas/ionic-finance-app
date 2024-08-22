@@ -7,10 +7,11 @@ ion-content {
   > div {
     img {
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: contain;
       background-position: center;
       z-index: -1;
       height: 100vh;
+      width: 100vw;
       position: absolute;
       opacity: 0.3;
     }
@@ -38,7 +39,8 @@ ion-content {
         background-color: black;
         &:first-child {
           text-align: start;
-          max-width: 60%;
+          max-width: 100%;
+          margin-right: 25%;
         }
         &:nth-child(2) {
           text-align: center;
@@ -49,9 +51,9 @@ ion-content {
 
         &:last-child {
           margin-left: 190px;
-
+          text-align: end;
           margin-bottom: 2rem;
-          max-width: 50%;
+          max-width: 100%;
         }
       }
     }
