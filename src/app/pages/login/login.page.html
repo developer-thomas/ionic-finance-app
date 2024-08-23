@@ -1,0 +1,73 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="white">
+    <ion-buttons>
+      <ion-back-button
+        text=""
+        icon="arrow-back"
+        slot="start"
+        color="primary"
+        defaultHref="/"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header class="ion-text-center ion-no-border">
+    <ion-toolbar color="transparent">
+      <img src="../../../assets/logo.png" />
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <div>
+      <h2>Entrar</h2>
+      <p>Insira o <b>CPF</b> e a <b>senha</b> para entrar na sua conta.</p>
+    </div>
+
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <ion-item lines="none">
+        <ion-label position="stacked">CPF:</ion-label>
+        <ion-input
+          placeholder="123.456.789-10"
+          formControlName="cpf"
+          maxlength="11"
+        ></ion-input>
+        <p *ngIf="myForm.get('cpf')?.errors && myForm.touched">
+          Informe um CPF válido*
+        </p>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked">Senha:</ion-label>
+        <ion-input
+          placeholder="Insira sua senha"
+          [type]="isVisible"
+          formControlName="password"
+          maxlength="16"
+        >
+          <ion-icon
+            slot="end"
+            (click)="changeInputPasswordType()"
+            [name]="isVisible === 'password' ? 'eye-outline' : 'eye-off-outline' "
+          ></ion-icon>
+        </ion-input>
+        <p *ngIf="myForm.get('password')?.errors && myForm.touched">
+          Informe uma senha válida*
+        </p>
+      </ion-item>
+
+      <ion-button
+        mode="ios"
+        [disabled]="myForm.invalid"
+        expand="full"
+        type="submit"
+      >
+        Entrar
+      </ion-button>
+    </form>
+    <div class="ion-text-center">
+      <p>Esqueceu sua senha? <a color="text-primary" href="">Clique aqui</a></p>
+      <p>Não possui conta? <a href="">Cadastre-se aqui.</a></p>
+    </div>
+  </div>
+</ion-content>
