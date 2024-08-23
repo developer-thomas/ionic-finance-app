@@ -56,8 +56,15 @@ export class LoginPage {
         this.loadingController.dismiss();
       },
       error: async (error) => {
-        await this.loadingController.dismiss();
-        await this.loginErrorToast();
+        if (error.status === 400) {
+          await this.loadingController.dismiss();
+          await this.loginErrorToast('CPF ou senha incorretos.');
+        } else {
+          await this.loadingController.dismiss();
+          await this.loginErrorToast(
+            'Falha ao conectar-se ao servidor, tente novamente mais tarde'
+          );
+        }
       },
       complete: () => {
         console.log('completed');
@@ -67,9 +74,9 @@ export class LoginPage {
     });
   }
 
-  async loginErrorToast() {
+  async loginErrorToast(message: string) {
     const toast = await this.toastController.create({
-      message: 'CPF ou senha incorretos.',
+      message: message,
       duration: 5000,
       position: 'bottom',
       color: 'danger',
