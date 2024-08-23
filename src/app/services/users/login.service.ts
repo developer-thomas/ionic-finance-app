@@ -8,6 +8,10 @@ interface userCredentials {
   passwsord: string;
 }
 
+interface HttpStatusInterface {
+  message: string;
+  status: number;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -24,15 +28,22 @@ export class LoginService {
   }
 
   private handleError(responseError: HttpErrorResponse) {
-    let errorMessage = '';
+    let errorMessage: HttpStatusInterface;
 
     if (responseError.error instanceof ErrorEvent) {
-      // Erro do lado do cliente
-      errorMessage = responseError.error.message;
+      // Erro do lado servidor
+      errorMessage = {
+        message: responseError.message,
+        status: responseError.status,
+      };
     } else {
-      errorMessage = responseError.error.message;
+      // Erro do lado do cliente
+      errorMessage = {
+        message: responseError.message,
+        status: responseError.status,
+      };
     }
 
-    return throwError(() => new Error(errorMessage));
+    return throwError(() => errorMessage);
   }
 }
