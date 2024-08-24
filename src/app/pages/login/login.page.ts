@@ -50,10 +50,10 @@ export class LoginPage {
     await this.loginSpinner();
 
     this.loginService.userCredentials(credentials).subscribe({
-      next: async (response) => {
-        // usar o jwt no back e pegar o token aqui
-
+      next: async (res) => {
+        this.loginService.storeUserPayload(res.token, res.userId);
         this.loadingController.dismiss();
+        await this.router.navigateByUrl(`/tabs/home/${res.userId}`);
       },
       error: async (error) => {
         if (error.status === 400) {
@@ -68,7 +68,6 @@ export class LoginPage {
       },
       complete: () => {
         console.log('completed');
-        this.router.navigateByUrl('/tabs/home');
         this.myForm.reset();
       },
     });

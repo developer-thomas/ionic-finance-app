@@ -46,4 +46,14 @@ export class LoginService {
 
     return throwError(() => errorMessage);
   }
+
+  storeUserPayload(userPayload: string, userId: string) {
+    localStorage.setItem('userPayload', userPayload);
+    localStorage.setItem('userId', userId);
+  }
+
+  clearStorage() {
+    localStorage.removeItem('userPayload');
+    localStorage.removeItem('userId');
+  }
 }
